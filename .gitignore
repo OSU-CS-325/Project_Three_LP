@@ -10,3 +10,7 @@
 
 # Matlab related
 *.asv
+
+# LaTeX related
+*.aux
+*.log

@@ -56,13 +56,13 @@ d5 =        cw25 + cw35
 d6 =        cw26 + cw36
 d7 =                      cw37
 np11 >= 0
-np21 >= 0
-np31 >= 0
 np12 >= 0
+np21 >= 0
 np22 >= 0
+np31 >= 0
 np32 >= 0
-np42 >= 0
 np33 >= 0
+np42 >= 0
 np43 >= 0
 nw11 >= 0
 nw12 >= 0
@@ -85,9 +85,32 @@ cost
 
 6.  Specify all quantities mathematically
 
-Most have been defined above already.
+Many have been defined above already.  A few more will be added here.
+
 cost = [sum of (npij*cpij) for all routes between plants and warehouses]
      + [sum of (nwjk*cwjk) for all routes between warehoues and retailers]
+
+cp11 = 10
+cp12 = 15
+cp21 = 11
+cp22 = 8
+cp31 = 13
+cp32 = 8
+cp33 = 9
+cp42 = 14
+cp43 = 8
+cw11 = 5
+cw12 = 6
+cw13 = 7
+cw14 = 10
+cw23 = 12
+cw24 = 8
+cw25 = 10
+cw26 = 14
+cw34 = 14
+cw35 = 12
+cw36 = 12
+cw37 = 6
 
 7.  Check the model for completeness and correctness
 

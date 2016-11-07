@@ -1,0 +1,5 @@
+https://www.mathworks.com/help/optim/ug/example-linear-programming.html
+
+https://www.mathworks.com/videos/mathematical-modeling-with-optimization-part-1-101559.html
+
+https://www.mathworks.com/videos/optimization-modeling-2-converting-to-solver-form-101560.html

@@ -1,0 +1,70 @@
+1.  Overall idea of problem
+
+Refrigerators moving from n=4 plants to q=3 warehouses to m=7 retailers.
+Not all plants deliver to all warehouses.
+Not all warehouses deliver to all retailers.
+Costs of shipping from plants to warehouses vary by pair.
+Costs of shipping from warehouses to retailers vary by pair.
+Each plant has a capacity in terms of number of refrigerators it can supply.
+Each retailer has a capacity in terms of number of refrigerators it demands.
+
+2.  What is the goal?  What are you trying to achieve?
+
+Determine optimal shipping routes (n->q and q->m).
+Determine number of refrigerators moving along each route (n->q and q->m).
+Satisfy the demand of the retailers.
+Minimize the cost.
+
+3.  Identify variables
+
+cpij = cost of moving a refrigerator between plant i and warehouse j
+  ex. cp32 = $8 = cost of moving from plant 3 to warehouse 2
+cwjk = cost of moving a refrigerator between warehouse j and retailer k
+  ex. cp14 = $10 = cost of moving from warehouse 1 to retailer 4
+si = capacity (supply) of each plant
+  ex. s2 = 450 = number of refrigerators that plant 2 can supply
+dk = capacity (demand) of each retailer
+  ex. d6 = 150 = number of refrigerators that plant 6 demands
+npij = number of refrigerators shipped from plant i to warehouse j
+nwjk = number of refrigerators shipped from warehouse j to retailer k
+
+4.  Identify constraints
+
+s1 <= 150
+s2 <= 450
+s3 <= 250
+s4 <= 150
+d1 >= 100
+d2 >= 150
+d3 >= 100
+d4 >= 200
+d5 >= 200
+d6 >= 150
+d7 >= 100
+cp11 + cp21 + cp31        = cw11 + cw12 + cw13 + cw14
+cp12 + cp22 + cp32 + cp42 =               cw23 + cw24 + cw25 + cw26
+              cp33 + cp43 =                      cw34 + cw35 + cw36 + cw37
+s1 = cp11 + cp12
+s2 = cp21 + cp22
+s3 = cp31 + cp32 + cp33
+s4 =        cp42 + cp43
+d1 = cw11
+d2 = cw12
+d3 = cw13 + cw23
+d4 = cw14 + cw24 + cw34
+d5 =        cw25 + cw35
+d6 =        cw26 + cw36
+d7 =                      cw37
+
+5.  Identify inputs and outputs that you can control
+
+npij
+nwjk
+
+6.  Specify all quantities mathematically
+
+Most have been defined above already.
+cost = [sum of (npij*cpij) for all routes between plants and warehouses]
+     + [sum of (nwjk*cwjk) for all routes between warehoues and retailers]
+
+7.  Check the model for completeness and correctness

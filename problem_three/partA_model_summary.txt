@@ -19,14 +19,20 @@ Minimize the cost.
 
 cpij = cost of moving a refrigerator between plant i and warehouse j
   ex. cp32 = $8 = cost of moving from plant 3 to warehouse 2
+  9 variables
 cwjk = cost of moving a refrigerator between warehouse j and retailer k
   ex. cp14 = $10 = cost of moving from warehouse 1 to retailer 4
+  12 variables
 si = capacity (supply) of each plant
   ex. s2 = 450 = number of refrigerators that plant 2 can supply
+  4 variables
 dk = capacity (demand) of each retailer
   ex. d6 = 150 = number of refrigerators that plant 6 demands
+  7 variables
 npij = number of refrigerators shipped from plant i to warehouse j
+  9 variables
 nwjk = number of refrigerators shipped from warehouse j to retailer k
+  12 variables
 
 4.  Identify constraints
 

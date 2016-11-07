@@ -39,47 +39,47 @@
 %   note matlab arrays/vectors start at index 1 (not 0)
 % ------------------------------------------------------------
 lb = zeros(32,1);
-lb(26) = 100   % d1
-lb(27) = 150   % d2
-lb(28) = 100   % d3
-lb(29) = 200   % d4
-lb(30) = 200   % d5
-lb(31) = 150   % d6
-lb(32) = 100   % d7
+lb(26) = 100;   % d1
+lb(27) = 150;   % d2
+lb(28) = 100;   % d3
+lb(29) = 200;   % d4
+lb(30) = 200;   % d5
+lb(31) = 150;   % d6
+lb(32) = 100;   % d7
 
 % ------------------------------------------------------------
 % upper bounds vector
 %   note matlab arrays/vectors start at index 1 (not 0)
 % ------------------------------------------------------------
 ub = Inf(32,1);
-ub(1)  = 150   % np11
-ub(2)  = 150   % np12
-ub(3)  = 450   % np21
-ub(4)  = 450   % np22
-ub(5)  = 250   % np31
-ub(6)  = 250   % np32
-ub(7)  = 250   % np33
-ub(8)  = 150   % np42
-ub(9)  = 150   % np43
-ub(22) = 150   % s1
-ub(23) = 450   % s2
-ub(24) = 250   % s3
-ub(25) = 150   % s4
+ub(1)  = 150;   % np11
+ub(2)  = 150;   % np12
+ub(3)  = 450;   % np21
+ub(4)  = 450;   % np22
+ub(5)  = 250;   % np31
+ub(6)  = 250;   % np32
+ub(7)  = 250;   % np33
+ub(8)  = 150;   % np42
+ub(9)  = 150;   % np43
+ub(22) = 150;   % s1
+ub(23) = 450;   % s2
+ub(24) = 250;   % s3
+ub(25) = 150;   % s4
 
 % ------------------------------------------------------------
 % linear inequality matrix and vector
 %   note matlab arrays/vectors start at index 1 (not 0)
 % ------------------------------------------------------------
-A = []
-b = []
+A = [];
+b = [];
 
 % ------------------------------------------------------------
 % linear equality matrix and vector
 %   note matlab arrays/vectors start at index 1 (not 0)
 %   14 equations in 32 variables
 % ------------------------------------------------------------
-Aeq = zeros(14, 32)
-beq = zeros(14, 1)
+Aeq = zeros(14, 32);
+beq = zeros(14, 1);
 %np11 + np21 + np31        = nw11 + nw12 + nw13 + nw14
 %np11 + np21 + np31 - nw11 - nw12 - nw13 - nw14 = 0
 Aeq(1,[1,3,5,10,11,12,13]) = [1,1,1,-1,-1,-1,-1];
@@ -128,29 +128,76 @@ Aeq(14,[32,21]) = [1,-1];
 %   note matlab arrays/vectors start at index 1 (not 0)
 % ------------------------------------------------------------
 f = zeros(32,1);
-f(1)  = 10    % np11(value in f is cp11)
-f(2)  = 15    % np12(value in f is cp12)
-f(3)  = 11    % np21(value in f is cp21)
-f(4)  = 8     % np22(value in f is cp22)
-f(5)  = 13    % np31(value in f is cp31)
-f(6)  = 8     % np32(value in f is cp32)
-f(7)  = 9     % np33(value in f is cp33)
-f(8)  = 14    % np42(value in f is cp42)
-f(9)  = 8     % np43(value in f is cp43)
-f(10) = 5     % nw11(value in f is cw11)
-f(11) = 6     % nw12(value in f is cw12)
-f(12) = 7     % nw13(value in f is cw13)
-f(13) = 10    % nw14(value in f is cw14)
-f(14) = 12    % nw23(value in f is cw23)
-f(15) = 8     % nw24(value in f is cw24)
-f(16) = 10    % nw25(value in f is cw25)
-f(17) = 14    % nw26(value in f is cw26)
-f(18) = 14    % nw34(value in f is cw34)
-f(19) = 12    % nw35(value in f is cw35)
-f(20) = 12    % nw36(value in f is cw36)
-f(21) = 6     % nw37(value in f is cw37)
+f(1)  = 10;    % np11(value in f is cp11)
+f(2)  = 15;    % np12(value in f is cp12)
+f(3)  = 11;    % np21(value in f is cp21)
+f(4)  = 8;     % np22(value in f is cp22)
+f(5)  = 13;    % np31(value in f is cp31)
+f(6)  = 8;     % np32(value in f is cp32)
+f(7)  = 9;     % np33(value in f is cp33)
+f(8)  = 14;    % np42(value in f is cp42)
+f(9)  = 8;     % np43(value in f is cp43)
+f(10) = 5;     % nw11(value in f is cw11)
+f(11) = 6;     % nw12(value in f is cw12)
+f(12) = 7;     % nw13(value in f is cw13)
+f(13) = 10;    % nw14(value in f is cw14)
+f(14) = 12;    % nw23(value in f is cw23)
+f(15) = 8;     % nw24(value in f is cw24)
+f(16) = 10;    % nw25(value in f is cw25)
+f(17) = 14;    % nw26(value in f is cw26)
+f(18) = 14;    % nw34(value in f is cw34)
+f(19) = 12;    % nw35(value in f is cw35)
+f(20) = 12;    % nw36(value in f is cw36)
+f(21) = 6;     % nw37(value in f is cw37)
 
 % ------------------------------------------------------------
 % call solver and obtain solution
 % ------------------------------------------------------------
-[x fval] = linprog(f,A,b,Aeq,beq,lb,ub)
+[x fval] = linprog(f,A,b,Aeq,beq,lb,ub);
+
+% ------------------------------------------------------------
+% print the optimum shipping routes and min cost
+% ------------------------------------------------------------
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(1), 1, 1);
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(2), 1, 2);
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(3), 2, 1);
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(4), 2, 2);
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(5), 3, 1);
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(6), 3, 2);
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(7), 3, 3);
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(8), 4, 2);
+fprintf('Ship %3.0f units from plant #%d to warehouse #%d.\n', x(9), 4, 3);
+fprintf('\n');
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(10), 1, 1);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(11), 1, 2);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(12), 1, 3);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(13), 1, 4);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(14), 2, 3);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(15), 2, 4);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(16), 2, 5);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(17), 2, 6);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(18), 3, 4);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(19), 3, 5);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(20), 3, 6);
+fprintf('Ship %3.0f units from warehouse #%d to retailer #%d.\n', x(21), 3, 7);
+fprintf('\n');
+fprintf('%3.0f total units will leave plant #%d (capacity is %3.0f).\n', x(1) + x(2), 1, x(22));
+fprintf('%3.0f total units will leave plant #%d (capacity is %3.0f).\n', x(3) + x(4), 2, x(23));
+fprintf('%3.0f total units will leave plant #%d (capacity is %3.0f).\n', x(5) + x(6) + x(7), 3, x(24));
+fprintf('%3.0f total units will leave plant #%d (capacity is %3.0f).\n', x(8) + x(9), 4, x(25));
+fprintf('\n');
+fprintf('%3.0f total units will enter warehouse #%d, %3.0f units will leave.\n', x(1) + x(3) + x(5), 1, x(10) + x(11) + x(12) + x(13));
+fprintf('%3.0f total units will enter warehouse #%d, %3.0f units will leave.\n', x(2) + x(4) + x(6) + x(8), 2, x(14) + x(15) + x(16) + x(17));
+fprintf('%3.0f total units will enter warehouse #%d, %3.0f units will leave.\n', x(7) + x(9), 3, x(18) + x(19) + x(20) + x(21));
+fprintf('\n')
+fprintf('%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(10), 1, x(26));
+fprintf('%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(11), 2, x(27));
+fprintf('%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(12) + x(14), 3, x(28));
+fprintf('%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(13) + x(15) + x(18), 4, x(29));
+fprintf('%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(16) + x(19), 5, x(30));
+fprintf('%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(17) + x(20), 6, x(31));
+fprintf('%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(21), 7, x(32));
+fprintf('\n')
+total = x(22) + x(23) + x(24) + x(25);
+fprintf('In all %3.0f units will travel through the network at a minimum cost of $%3.0f.\n', total, fval);
+

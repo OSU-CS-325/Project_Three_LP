@@ -1,0 +1,12 @@
+# Apple Specific
+.DS_Store
+
+# Python related
+*.pyc
+*.py.swp
+
+# Jupyter Notebook related
+.ipynb_checkpoints/
+
+# Matlab related
+*.asv

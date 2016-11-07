@@ -55,11 +55,33 @@ d4 = cw14 + cw24 + cw34
 d5 =        cw25 + cw35
 d6 =        cw26 + cw36
 d7 =                      cw37
+np11 >= 0
+np21 >= 0
+np31 >= 0
+np12 >= 0
+np22 >= 0
+np32 >= 0
+np42 >= 0
+np33 >= 0
+np43 >= 0
+nw11 >= 0
+nw12 >= 0
+nw13 >= 0
+nw14 >= 0
+nw23 >= 0
+nw24 >= 0
+nw25 >= 0
+nw26 >= 0
+nw34 >= 0
+nw35 >= 0
+nw36 >= 0
+nw37 >= 0
 
 5.  Identify inputs and outputs that you can control
 
 npij
 nwjk
+cost
 
 6.  Specify all quantities mathematically
 
@@ -68,3 +90,5 @@ cost = [sum of (npij*cpij) for all routes between plants and warehouses]
      + [sum of (nwjk*cwjk) for all routes between warehoues and retailers]
 
 7.  Check the model for completeness and correctness
+
+All variables are positive.

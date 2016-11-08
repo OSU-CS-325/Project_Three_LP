@@ -1,0 +1,184 @@
+\documentclass[../report/main.tex]{subfiles}
+ 
+\begin{document}
+
+% The asterix after \subsection disables section numbering
+\subsection*{Part A Problem Statement}
+Determine the number of refrigerators to be shipped from plants to warehouses, and then warehouses to retailers to minimize the cost.
+
+\subsection*{Part A Solution}
+\begin{itemize}
+	\item In all 1000 units will travel through the network at a minimum cost of \$17100.
+	\newline
+	\item Ship 150 units from plant \#1 to warehouse \#1 at a cost of \$1500.
+	\item Ship 200 units from plant \#2 to warehouse \#1 at a cost of \$2200.
+	\item Ship 250 units from plant \#2 to warehouse \#2 at a cost of \$2000.
+	\item Ship 150 units from plant \#3 to warehouse \#2 at a cost of \$1200.
+	\item Ship 100 units from plant \#3 to warehouse \#3 at a cost of \$ 900.
+	\item Ship 150 units from plant \#4 to warehouse \#3 at a cost of \$1200.
+	\newline
+	\item Ship 100 units from warehouse \#1 to retailer \#1 at a cost of \$ 500.
+	\item Ship 150 units from warehouse \#1 to retailer \#2 at a cost of \$ 900.
+	\item Ship 100 units from warehouse \#1 to retailer \#3 at a cost of \$ 700.
+	\item Ship 200 units from warehouse \#2 to retailer \#4 at a cost of \$1600.
+	\item Ship 200 units from warehouse \#2 to retailer \#5 at a cost of \$2000.
+	\item Ship 150 units from warehouse \#3 to retailer \#6 at a cost of \$1800.
+	\item Ship 100 units from warehouse \#3 to retailer \#7 at a cost of \$ 600.
+	\newline
+	\item 150 total units will leave plant \#1 (capacity is 150).
+	\item 450 total units will leave plant \#2 (capacity is 450).
+	\item 250 total units will leave plant \#3 (capacity is 250).
+	\item 150 total units will leave plant \#4 (capacity is 150).
+	\newline
+	\item 350 total units will enter warehouse \#1, 350 units will leave.
+	\item 400 total units will enter warehouse \#2, 400 units will leave.
+	\item 250 total units will enter warehouse \#3, 250 units will leave.
+	\newline
+	\item 100 total units will enter retailer \#1 (demand is 100).
+	\item 150 total units will enter retailer \#2 (demand is 150).
+	\item 100 total units will enter retailer \#3 (demand is 100).
+	\item 200 total units will enter retailer \#4 (demand is 200).
+	\item 200 total units will enter retailer \#5 (demand is 200).
+	\item 150 total units will enter retailer \#6 (demand is 150).
+	\item 100 total units will enter retailer \#7 (demand is 100).
+\end{itemize}
+\subsection*{Part A Linear Program Formulation}
+\begin{enumerate}[1.]
+	\item Overall idea of problem
+	\begin{itemize}
+		\item Refrigerators moving from $n=4$ plants to $q=3$ warehouses to $m=7$ retailers.
+		\item Not all plants deliver to all warehouses.
+		\item Not all warehouses deliver to all retailers.
+		\item Costs of shipping from plants to warehouses vary by pair.
+		\item Costs of shipping from warehouses to retailers vary by pair.
+		\item Each plant has a capacity in terms of number of refrigerators it can supply.
+		\item Each retailer has a capacity in terms of number of refrigerators it demands.
+	\end{itemize}
+	\item What is the goal?  What are you trying to achieve?
+	\begin{itemize}
+		\item Determine optimal shipping routes ($n$ to $q$ and $q$ to $m$).
+		\item Determine number of refrigerators moving along each route ($n$ to $q$ and $q$ to $m$).
+		\item Satisfy the demand of the retailers.
+		\item Minimize the cost.
+	\end{itemize}
+	\item Identify variables
+	\begin{itemize}
+		\item $cp_{ij}$ = cost of moving a refrigerator between plant i and warehouse j
+		\begin{itemize}
+			\item   ex. $cp_{32} = 8$ = cost of moving from plant 3 to warehouse 2
+			\item   9 variables
+		\end{itemize}
+		\item $cw_{jk}$ = cost of moving a refrigerator between warehouse j and retailer k
+		\begin{itemize}
+  			\item  ex. $cp_{14} = 10$ = cost of moving from warehouse 1 to retailer 4
+  			\item  12 variables
+		\end{itemize}
+		\item $s_i$ = capacity (supply) of each plant
+		\begin{itemize}
+ 			\item   ex. $s_2 = 450$ = number of refrigerators that plant 2 can supply
+			\item    4 variables
+		\end{itemize}
+		\item $d_k$ = capacity (demand) of each retailer
+		\begin{itemize}
+			\item    ex. $d_6 = 150$ = number of refrigerators that plant 6 demands
+			\item    7 variables
+		\end{itemize}
+		\item $np_{ij}$ = number of refrigerators shipped from plant i to warehouse j
+		\begin{itemize}
+			\item    9 variables
+		\end{itemize}
+		\item $nw_{jk}$ = number of refrigerators shipped from warehouse j to retailer k
+		\begin{itemize}
+			\item    12 variables
+		\end{itemize}
+	\end{itemize}
+	\item Identify constraints
+	\begin{itemize}
+		\item $s_1 \leq 150$
+		\item $s_2 \leq 450$
+		\item $s_3 \leq 250$
+		\item $s_4 \leq 150$
+		\item $d_1 \geq 100$
+		\item $d_2 \geq 150$
+		\item $d_3 \geq 100$
+		\item $d_4 \geq 200$
+		\item $d_5 \geq 200$
+		\item $d_6 \geq 150$
+		\item $d_7 \geq 100$
+		\item $np_{11} + np_{21} + np_{31}        = nw_{11} + nw_{12} + nw_{13} + nw_{14}$
+		\item $np_{12} + np_{22} + np_{32} + np_{42} =               nw_{23} + nw_{24} + nw_{25} + nw_{26}$
+		\item $              np_{33} + np_{43} =                      nw_{34} + nw_{35} + nw_{36} + nw_{37}$
+		\item $s_1 = np_{11} + np_{12}$
+		\item $s_2 = np_{21} + np_{22}$
+		\item $s_3 = np_{31} + np_{32} + np_{33}$
+		\item $s_4 =        np_{42} + np_{43}$
+		\item $d_1 = nw_{11}$
+		\item $d_2 = nw_{12}$
+		\item $d_3 = nw_{13} + nw_{23}$
+		\item $d_4 = nw_{14} + nw_{24} + nw_{34}$
+		\item $d_5 =        nw_{25} + nw_{35}$
+		\item $d_6 =        nw_{26} + nw_{36}$
+		\item $d_7 =                      nw_{37}$
+		\item $np_{11} \geq 0$
+		\item $np_{12} \geq 0$
+		\item $np_{21} \geq 0$
+		\item $np_{22} \geq 0$
+		\item $np_{31} \geq 0$
+		\item $np_{32} \geq 0$
+		\item $np_{33} \geq 0$
+		\item $np_{42} \geq 0$
+		\item $np_{43} \geq 0$
+		\item $nw_{11} \geq 0$
+		\item $nw_{12} \geq 0$
+		\item $nw_{13} \geq 0$
+		\item $nw_{14} \geq 0$
+		\item $nw_{23} \geq 0$
+		\item $nw_{24} \geq 0$
+		\item $nw_{25} \geq 0$
+		\item $nw_{26} \geq 0$
+		\item $nw_{34} \geq 0$
+		\item $nw_{35} \geq 0$
+		\item $nw_{36} \geq 0$
+		\item $nw_{37} \geq 0$
+	\end{itemize}
+	\item Identify inputs and outputs that you can control
+	\begin{itemize}
+		\item $np_{ij}$
+		\item $nw_{jk}$
+		\item $cost$
+	\end{itemize}
+	\item Specify all quantities mathematically
+	\begin{itemize}
+		\item Many have been defined above already.  A few more will be added here.
+		\item $cost$ = [sum of ($np_{ij}*cp_{ij}$) for all routes between plants and warehouses]
+			+ [sum of ($nw_{jk}*cw_{jk}$) for all routes between warehoues and retailers]
+		\item $cp_{11} = 10$
+		\item $cp_{12} = 15$
+		\item $cp_{21} = 11$
+		\item $cp_{22} = 8$
+		\item $cp_{31} = 13$
+		\item $cp_{32} = 8$
+		\item $cp_{33} = 9$
+		\item $cp_{42} = 14$
+		\item $cp_{43} = 8$
+		\item $cw_{11} = 5$
+		\item $cw_{12} = 6$
+		\item $cw_{13} = 7$
+		\item $cw_{14} = 10$
+		\item $cw_{23} = 12$
+		\item $cw_{24} = 8$
+		\item $cw_{25} = 10$
+		\item $cw_{26} = 14$
+		\item $cw_{34} = 14$
+		\item $cw_{35} = 12$
+		\item $cw_{36} = 12$
+		\item $cw_{37} = 6$
+	\end{itemize}
+	\item Check the model for completeness and correctness
+	\begin{itemize}
+	\item All variables are positive.
+	\end{itemize}
+\end{enumerate}
+\subsection*{Part A Matlab Code}
+\lstinputlisting{partA.m}
+\end{document}

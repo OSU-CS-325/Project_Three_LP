@@ -1,3 +1,7 @@
+------------------------------------------------------------
+Project 3 Problem 1 Part C Model Summary
+------------------------------------------------------------
+
 1.  Overall idea of problem
 
 Refrigerators moving from n=4 plants to q=3 warehouses to m=7 retailers.

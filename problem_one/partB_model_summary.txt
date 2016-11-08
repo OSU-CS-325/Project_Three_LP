@@ -1,5 +1,5 @@
 ------------------------------------------------------------
-Project 3 Problem 1 Part A Model Summary
+Project 3 Problem 1 Part B Model Summary
 ------------------------------------------------------------
 
 1.  Overall idea of problem
@@ -11,6 +11,7 @@ Costs of shipping from plants to warehouses vary by pair.
 Costs of shipping from warehouses to retailers vary by pair.
 Each plant has a capacity in terms of number of refrigerators it can supply.
 Each retailer has a capacity in terms of number of refrigerators it demands.
+Warehouse #2 has closed and all associated routes have been eliminated.
 
 2.  What is the goal?  What are you trying to achieve?
 
@@ -65,6 +66,8 @@ d4 = nw14 + nw24 + nw34
 d5 =        nw25 + nw35
 d6 =        nw26 + nw36
 d7 =                      nw37
+np12 + np22 + np32 + np42 = 0
+nw23 + nw24 + nw25 + nw26 = 0
 np11 >= 0
 np12 >= 0
 np21 >= 0

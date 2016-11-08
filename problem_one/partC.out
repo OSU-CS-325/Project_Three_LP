@@ -1,45 +1,45 @@
 ------------------------------------------------------------
-Project 3 Problem 1 Part C Solution
+Project 3 Problem 1 Part B Solution
 ------------------------------------------------------------
 
-Ship 150 units from plant #1 to warehouse #1 at a cost of $1500.
-Ship   0 units from plant #1 to warehouse #2 at a cost of $   0.
-Ship 350 units from plant #2 to warehouse #1 at a cost of $3850.
-Ship 100 units from plant #2 to warehouse #2 at a cost of $ 800.
-Ship   0 units from plant #3 to warehouse #1 at a cost of $   0.
-Ship   0 units from plant #3 to warehouse #2 at a cost of $   0.
-Ship 250 units from plant #3 to warehouse #3 at a cost of $2250.
-Ship   0 units from plant #4 to warehouse #2 at a cost of $   0.
-Ship 150 units from plant #4 to warehouse #3 at a cost of $1200.
+Ship 134 units from plant #1 to warehouse #1 at a cost of $1337.
+Ship   8 units from plant #1 to warehouse #2 at a cost of $ 125.
+Ship 431 units from plant #2 to warehouse #1 at a cost of $4739.
+Ship  10 units from plant #2 to warehouse #2 at a cost of $  78.
+Ship   3 units from plant #3 to warehouse #1 at a cost of $  35.
+Ship   3 units from plant #3 to warehouse #2 at a cost of $  21.
+Ship 251 units from plant #3 to warehouse #3 at a cost of $2262.
+Ship   3 units from plant #4 to warehouse #2 at a cost of $  45.
+Ship 156 units from plant #4 to warehouse #3 at a cost of $1245.
 
-Ship 100 units from warehouse #1 to retailer #1 at a cost of $ 500.
-Ship 150 units from warehouse #1 to retailer #2 at a cost of $ 900.
-Ship 100 units from warehouse #1 to retailer #3 at a cost of $ 700.
-Ship 150 units from warehouse #1 to retailer #4 at a cost of $1500.
+Ship 104 units from warehouse #1 to retailer #1 at a cost of $ 521.
+Ship 151 units from warehouse #1 to retailer #2 at a cost of $ 905.
+Ship 109 units from warehouse #1 to retailer #3 at a cost of $ 761.
+Ship 209 units from warehouse #1 to retailer #4 at a cost of $2094.
 Ship   0 units from warehouse #2 to retailer #3 at a cost of $   0.
-Ship  50 units from warehouse #2 to retailer #4 at a cost of $ 400.
-Ship  50 units from warehouse #2 to retailer #5 at a cost of $ 500.
-Ship   0 units from warehouse #2 to retailer #6 at a cost of $   0.
+Ship   0 units from warehouse #2 to retailer #4 at a cost of $   0.
+Ship  13 units from warehouse #2 to retailer #5 at a cost of $ 125.
+Ship  11 units from warehouse #2 to retailer #6 at a cost of $ 158.
 Ship   0 units from warehouse #3 to retailer #4 at a cost of $   0.
-Ship 150 units from warehouse #3 to retailer #5 at a cost of $1800.
-Ship 150 units from warehouse #3 to retailer #6 at a cost of $1800.
-Ship 100 units from warehouse #3 to retailer #7 at a cost of $ 600.
+Ship 185 units from warehouse #3 to retailer #5 at a cost of $2220.
+Ship 138 units from warehouse #3 to retailer #6 at a cost of $1660.
+Ship  96 units from warehouse #3 to retailer #7 at a cost of $ 575.
 
-150 total units will leave plant #1 (capacity is 150).
-450 total units will leave plant #2 (capacity is 450).
-250 total units will leave plant #3 (capacity is 250).
-150 total units will leave plant #4 (capacity is 150).
+142 total units will leave plant #1 (capacity is 136).
+440 total units will leave plant #2 (capacity is 435).
+257 total units will leave plant #3 (capacity is 245).
+159 total units will leave plant #4 (capacity is 153).
 
-500 total units will enter warehouse #1, 500 units will leave.
-100 total units will enter warehouse #2, 100 units will leave.
-400 total units will enter warehouse #3, 400 units will leave.
+567 total units will enter warehouse #1, 573 units will leave.
+ 24 total units will enter warehouse #2,  24 units will leave.
+407 total units will enter warehouse #3, 419 units will leave.
 
-100 total units will enter retailer #1 (demand is 100).
-150 total units will enter retailer #2 (demand is 150).
-100 total units will enter retailer #3 (demand is 100).
-200 total units will enter retailer #4 (demand is 200).
-200 total units will enter retailer #5 (demand is 200).
+104 total units will enter retailer #1 (demand is 108).
+151 total units will enter retailer #2 (demand is 157).
+109 total units will enter retailer #3 (demand is 107).
+209 total units will enter retailer #4 (demand is 206).
+198 total units will enter retailer #5 (demand is 200).
 150 total units will enter retailer #6 (demand is 150).
-100 total units will enter retailer #7 (demand is 100).
+ 96 total units will enter retailer #7 (demand is 100).
 
-In all 1000 units will travel through the network at a minimum cost of $18300.
+In all 968 units will travel through the network at a minimum cost of $18905.

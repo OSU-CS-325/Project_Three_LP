@@ -1,0 +1,126 @@
+1.  Overall idea of problem
+
+Refrigerators moving from n=4 plants to q=3 warehouses to m=7 retailers.
+Not all plants deliver to all warehouses.
+Not all warehouses deliver to all retailers.
+Costs of shipping from plants to warehouses vary by pair.
+Costs of shipping from warehouses to retailers vary by pair.
+Each plant has a capacity in terms of number of refrigerators it can supply.
+Each retailer has a capacity in terms of number of refrigerators it demands.
+Warehouse #2 is limited to just 100 refrigerators in and out per week.
+
+2.  What is the goal?  What are you trying to achieve?
+
+Determine optimal shipping routes (n->q and q->m).
+Determine number of refrigerators moving along each route (n->q and q->m).
+Satisfy the demand of the retailers.
+Minimize the cost.
+
+3.  Identify variables
+
+cpij = cost of moving a refrigerator between plant i and warehouse j
+  ex. cp32 = $8 = cost of moving from plant 3 to warehouse 2
+  9 variables
+cwjk = cost of moving a refrigerator between warehouse j and retailer k
+  ex. cp14 = $10 = cost of moving from warehouse 1 to retailer 4
+  12 variables
+si = capacity (supply) of each plant
+  ex. s2 = 450 = number of refrigerators that plant 2 can supply
+  4 variables
+dk = capacity (demand) of each retailer
+  ex. d6 = 150 = number of refrigerators that plant 6 demands
+  7 variables
+npij = number of refrigerators shipped from plant i to warehouse j
+  9 variables
+nwjk = number of refrigerators shipped from warehouse j to retailer k
+  12 variables
+
+4.  Identify constraints
+
+s1 <= 150
+s2 <= 450
+s3 <= 250
+s4 <= 150
+d1 >= 100
+d2 >= 150
+d3 >= 100
+d4 >= 200
+d5 >= 200
+d6 >= 150
+d7 >= 100
+np11 + np21 + np31        = nw11 + nw12 + nw13 + nw14
+np12 + np22 + np32 + np42 =               nw23 + nw24 + nw25 + nw26
+              np33 + np43 =                      nw34 + nw35 + nw36 + nw37
+s1 = np11 + np12
+s2 = np21 + np22
+s3 = np31 + np32 + np33
+s4 =        np42 + np43
+d1 = nw11
+d2 = nw12
+d3 = nw13 + nw23
+d4 = nw14 + nw24 + nw34
+d5 =        nw25 + nw35
+d6 =        nw26 + nw36
+d7 =                      nw37
+np12 + np22 + np32 + np42 = 100
+nw23 + nw24 + nw25 + nw26 = 100
+np11 >= 0
+np12 >= 0
+np21 >= 0
+np22 >= 0
+np31 >= 0
+np32 >= 0
+np33 >= 0
+np42 >= 0
+np43 >= 0
+nw11 >= 0
+nw12 >= 0
+nw13 >= 0
+nw14 >= 0
+nw23 >= 0
+nw24 >= 0
+nw25 >= 0
+nw26 >= 0
+nw34 >= 0
+nw35 >= 0
+nw36 >= 0
+nw37 >= 0
+
+5.  Identify inputs and outputs that you can control
+
+npij
+nwjk
+cost
+
+6.  Specify all quantities mathematically
+
+Many have been defined above already.  A few more will be added here.
+
+cost = [sum of (npij*cpij) for all routes between plants and warehouses]
+     + [sum of (nwjk*cwjk) for all routes between warehoues and retailers]
+
+cp11 = 10
+cp12 = 15
+cp21 = 11
+cp22 = 8
+cp31 = 13
+cp32 = 8
+cp33 = 9
+cp42 = 14
+cp43 = 8
+cw11 = 5
+cw12 = 6
+cw13 = 7
+cw14 = 10
+cw23 = 12
+cw24 = 8
+cw25 = 10
+cw26 = 14
+cw34 = 14
+cw35 = 12
+cw36 = 12
+cw37 = 6
+
+7.  Check the model for completeness and correctness
+
+All variables are positive.

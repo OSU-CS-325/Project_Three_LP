@@ -76,10 +76,10 @@ b = [];
 % ------------------------------------------------------------
 % linear equality matrix and vector
 %   note matlab arrays/vectors start at index 1 (not 0)
-%   14 equations in 32 variables
+%   16 equations in 32 variables
 % ------------------------------------------------------------
-Aeq = zeros(14, 32);
-beq = zeros(14, 1);
+Aeq = zeros(16, 32);
+beq = zeros(16, 1);
 %np11 + np21 + np31        = nw11 + nw12 + nw13 + nw14
 %np11 + np21 + np31 - nw11 - nw12 - nw13 - nw14 = 0
 Aeq(1,[1,3,5,10,11,12,13]) = [1,1,1,-1,-1,-1,-1];
@@ -122,6 +122,12 @@ Aeq(13,[31,17,20]) = [1,-1,-1];
 %d7 =                      nw37
 %d7 - nw37 = 0
 Aeq(14,[32,21]) = [1,-1];
+%np12 + np22 + np32 + np42 = 100
+Aeq(15,[2,4,6,8]) = [1,1,1,1];
+beq(15) = 100;
+%nw23 + nw24 + nw25 + nw26 = 100
+Aeq(16,[14,15,16,17]) = [1,1,1,1];
+beq(16) = 100;
 
 % ------------------------------------------------------------
 % objective function vector
@@ -158,9 +164,9 @@ f(21) = 6;     % nw37(value in f is cw37)
 % ------------------------------------------------------------
 % print the optimum shipping routes and min cost
 % ------------------------------------------------------------
-fileID = fopen('partA.out','w');
+fileID = fopen('partC.out','w');
 fprintf(fileID, '------------------------------------------------------------\n');
-fprintf(fileID, 'Project 3 Problem 1 Part A Solution\n');
+fprintf(fileID, 'Project 3 Problem 1 Part C Solution\n');
 fprintf(fileID, '------------------------------------------------------------\n');
 fprintf(fileID, '\n');
 fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(1), 1, 1, x(1) * f(1));

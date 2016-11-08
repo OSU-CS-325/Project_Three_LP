@@ -150,8 +150,7 @@ Determine the number of refrigerators to be shipped from plants to warehouses, a
 	\item Specify all quantities mathematically
 	\begin{itemize}
 		\item Many have been defined above already.  A few more will be added here.
-		\item $cost$ = [sum of ($np_{ij}*cp_{ij}$) for all routes between plants and warehouses]
-			+ [sum of ($nw_{jk}*cw_{jk}$) for all routes between warehoues and retailers]
+		\item $cost = \mathop{\sum_{i=1}^{n}\sum_{j=1}^{q}}np_{ij}*cp_{ij} +  \mathop{\sum_{j=1}^{q}\sum_{k=1}^{m}}nw_{jk}*cw_{jk}$
 		\item $cp_{11} = 10$
 		\item $cp_{12} = 15$
 		\item $cp_{21} = 11$

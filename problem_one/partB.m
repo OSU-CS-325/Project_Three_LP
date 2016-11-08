@@ -162,51 +162,90 @@ f(21) = 6;     % nw37(value in f is cw37)
 % ------------------------------------------------------------
 % print the optimum shipping routes and min cost
 % ------------------------------------------------------------
-fileID = fopen('partC.out','w');
-fprintf(fileID, '------------------------------------------------------------\n');
+fileID = fopen('partB.out','w');
+fprintf(fileID, '-----------------------------------------------------\n');
 fprintf(fileID, 'Project 3 Problem 1 Part B Solution\n');
-fprintf(fileID, '------------------------------------------------------------\n');
+fprintf(fileID, '-----------------------------------------------------\n');
 fprintf(fileID, '\n');
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(1), 1, 1, x(1) * f(1));
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(2), 1, 2, x(2) * f(2));
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(3), 2, 1, x(3) * f(3));
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(4), 2, 2, x(4) * f(4));
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(5), 3, 1, x(5) * f(5));
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(6), 3, 2, x(6) * f(6));
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(7), 3, 3, x(7) * f(7));
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(8), 4, 2, x(8) * f(8));
-fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at a cost of $%4.0f.\n', x(9), 4, 3, x(9) * f(9));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(1), 1, 1, x(1) * f(1));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(2), 1, 2, x(2) * f(2));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(3), 2, 1, x(3) * f(3));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(4), 2, 2, x(4) * f(4));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(5), 3, 1, x(5) * f(5));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(6), 3, 2, x(6) * f(6));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(7), 3, 3, x(7) * f(7));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(8), 4, 2, x(8) * f(8));
+fprintf(fileID, 'Ship %3.0f units from plant #%d to warehouse #%d at ', ...
+    'a cost of $%4.0f.\n', x(9), 4, 3, x(9) * f(9));
 fprintf(fileID, '\n');
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(10), 1, 1, x(10) * f(10));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(11), 1, 2, x(11) * f(11));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(12), 1, 3, x(12) * f(12));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(13), 1, 4, x(13) * f(13));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(14), 2, 3, x(14) * f(14));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(15), 2, 4, x(15) * f(15));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(16), 2, 5, x(16) * f(16));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(17), 2, 6, x(17) * f(17));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(18), 3, 4, x(18) * f(18));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(19), 3, 5, x(19) * f(19));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(20), 3, 6, x(20) * f(20));
-fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d at a cost of $%4.0f.\n', x(21), 3, 7, x(21) * f(21));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(10), 1, 1, x(10) * f(10));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(11), 1, 2, x(11) * f(11));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(12), 1, 3, x(12) * f(12));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(13), 1, 4, x(13) * f(13));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(14), 2, 3, x(14) * f(14));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(15), 2, 4, x(15) * f(15));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(16), 2, 5, x(16) * f(16));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(17), 2, 6, x(17) * f(17));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(18), 3, 4, x(18) * f(18));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(19), 3, 5, x(19) * f(19));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(20), 3, 6, x(20) * f(20));
+fprintf(fileID, 'Ship %3.0f units from warehouse #%d to retailer #%d ', ...
+    'at a cost of $%4.0f.\n', x(21), 3, 7, x(21) * f(21));
 fprintf(fileID, '\n');
-fprintf(fileID, '%3.0f total units will leave plant #%d (capacity is %3.0f).\n', x(1) + x(2), 1, x(22));
-fprintf(fileID, '%3.0f total units will leave plant #%d (capacity is %3.0f).\n', x(3) + x(4), 2, x(23));
-fprintf(fileID, '%3.0f total units will leave plant #%d (capacity is %3.0f).\n', x(5) + x(6) + x(7), 3, x(24));
-fprintf(fileID, '%3.0f total units will leave plant #%d (capacity is %3.0f).\n', x(8) + x(9), 4, x(25));
+fprintf(fileID, '%3.0f total units will leave plant #%d (capacity is ', ...
+    '%3.0f).\n', x(1) + x(2), 1, x(22));
+fprintf(fileID, '%3.0f total units will leave plant #%d (capacity is ', ...
+    '%3.0f).\n', x(3) + x(4), 2, x(23));
+fprintf(fileID, '%3.0f total units will leave plant #%d (capacity is ', ...
+    '%3.0f).\n', x(5) + x(6) + x(7), 3, x(24));
+fprintf(fileID, '%3.0f total units will leave plant #%d (capacity is ', ...
+    '%3.0f).\n', x(8) + x(9), 4, x(25));
 fprintf(fileID, '\n');
-fprintf(fileID, '%3.0f total units will enter warehouse #%d, %3.0f units will leave.\n', x(1) + x(3) + x(5), 1, x(10) + x(11) + x(12) + x(13));
-fprintf(fileID, '%3.0f total units will enter warehouse #%d, %3.0f units will leave.\n', x(2) + x(4) + x(6) + x(8), 2, x(14) + x(15) + x(16) + x(17));
-fprintf(fileID, '%3.0f total units will enter warehouse #%d, %3.0f units will leave.\n', x(7) + x(9), 3, x(18) + x(19) + x(20) + x(21));
+fprintf(fileID, '%3.0f total units will enter warehouse #%d, %3.0f ', ...
+    'units will leave.\n', x(1) + x(3) + x(5), 1, ...
+    x(10) + x(11) + x(12) + x(13));
+fprintf(fileID, '%3.0f total units will enter warehouse #%d, %3.0f ', ...
+    'units will leave.\n', x(2) + x(4) + x(6) + x(8), 2, ...
+    x(14) + x(15) + x(16) + x(17));
+fprintf(fileID, '%3.0f total units will enter warehouse #%d, %3.0f ', ...
+    'units will leave.\n', x(7) + x(9), 3, ...
+    x(18) + x(19) + x(20) + x(21));
 fprintf(fileID, '\n')
-fprintf(fileID, '%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(10), 1, x(26));
-fprintf(fileID, '%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(11), 2, x(27));
-fprintf(fileID, '%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(12) + x(14), 3, x(28));
-fprintf(fileID, '%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(13) + x(15) + x(18), 4, x(29));
-fprintf(fileID, '%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(16) + x(19), 5, x(30));
-fprintf(fileID, '%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(17) + x(20), 6, x(31));
-fprintf(fileID, '%3.0f total units will enter retailer #%d (demand is %3.0f).\n', x(21), 7, x(32));
+fprintf(fileID, '%3.0f total units will enter retailer #%d (demand ', ...
+    'is %3.0f).\n', x(10), 1, x(26));
+fprintf(fileID, '%3.0f total units will enter retailer #%d (demand ', ...
+    'is %3.0f).\n', x(11), 2, x(27));
+fprintf(fileID, '%3.0f total units will enter retailer #%d (demand ', ...
+    'is %3.0f).\n', x(12) + x(14), 3, x(28));
+fprintf(fileID, '%3.0f total units will enter retailer #%d (demand ', ...
+    'is %3.0f).\n', x(13) + x(15) + x(18), 4, x(29));
+fprintf(fileID, '%3.0f total units will enter retailer #%d (demand ', ...
+    'is %3.0f).\n', x(16) + x(19), 5, x(30));
+fprintf(fileID, '%3.0f total units will enter retailer #%d (demand ', ...
+    'is %3.0f).\n', x(17) + x(20), 6, x(31));
+fprintf(fileID, '%3.0f total units will enter retailer #%d (demand ', ...
+    'is %3.0f).\n', x(21), 7, x(32));
 fprintf(fileID, '\n')
 total = x(22) + x(23) + x(24) + x(25);
-fprintf(fileID, 'In all %3.0f units will travel through the network at a minimum cost of $%5.0f.\n', total, fval);
+fprintf(fileID, 'In all %3.0f units will travel through the network ', ...
+    'at a minimum cost of $%5.0f.\n', total, fval);
 fclose(fileID);

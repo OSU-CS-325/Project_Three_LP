@@ -32,10 +32,10 @@ for j = 1:numel(lambda)
 end
 
 figure(1)
-title('Cost vs. Calorie Optimization')
 plot(calories, cost, 'k-')
 hold on
 plot(calories, cost, 'r.', 'markersize', 25)
 grid on
 xlabel('Calories (kcal)')
 ylabel('Cost ($)')
+title('Cost vs. Calorie Optimization')

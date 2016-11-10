@@ -9,9 +9,81 @@ Determine the combination of ingredients that minimizes calories but meets all n
 \begin{enumerate}[i.]
 	\item Formulate the problem as a linear program with an objective function and all constraints.
 
+	We can formulate this problem as the following linear program:
+
+	\begin{equation*}
+		\begin{aligned}
+			% Minimize calories
+			& \text{minimize} & & 21 \cdot w_{\text{tomato}} + 16 \cdot  w_{\text{lettuce}} + 40 \cdot w_{\text{spinach}} + 41 \cdot w_{\text{carrot}} \\
+			& & & + 585 \cdot w_{\text{sunflower seed}} + 120 \cdot w_{\text{smoked tofu}} + 164 \cdot w_{\text{chickpea}} + 884 \cdot w_{\text{oil}}\\ \\
+			% Subject to >= 15g protein
+			& \text{subject to} & & -0.85 \cdot w_{\text{tomato}} - 1.62 \cdot  w_{\text{lettuce}} - 2.86 \cdot w_{\text{spinach}} - 0.93 \cdot w_{\text{carrot}} \\
+			& & & - 23.4 \cdot w_{\text{sunflower seed}} - 16 \cdot w_{\text{smoked tofu}} - 9 \cdot w_{\text{chickpea}} - 0 \cdot w_{\text{oil}} \leq -15, \\ \\
+			% Subject to >= 2g fat
+			& & & - 0.33 \cdot w_{\text{tomato}} - 0.2 \cdot  w_{\text{lettuce}} - 0.39 \cdot w_{\text{spinach}} - 0.24  \cdot w_{\text{carrot}} \\
+			& & & - 48.7 \cdot w_{\text{sunflower seed}} - 5 \cdot w_{\text{smoked tofu}} - 2.6 \cdot w_{\text{chickpea}} - 100 \cdot w_{\text{oil}} \leq -2, \\ \\
+			% Subject to <= 8g fat
+			& & & 0.33 \cdot w_{\text{tomato}} + 0.2 \cdot  w_{\text{lettuce}} + 0.39 \cdot w_{\text{spinach}} + 0.24  \cdot w_{\text{carrot}} \\
+			& & & + 48.7 \cdot w_{\text{sunflower seed}} + 5 \cdot w_{\text{smoked tofu}} + 2.6 \cdot w_{\text{chickpea}} + 100 \cdot w_{\text{oil}} \leq 8, \\ \\
+			% Subject to >= 4g carbohydrates
+			& & & - 4.64 \cdot w_{\text{tomato}} - 2.37 \cdot  w_{\text{lettuce}} - 3.63 \cdot w_{\text{spinach}} - 9.58  \cdot w_{\text{carrot}} \\
+			& & & - 15 \cdot w_{\text{sunflower seed}} - 3 \cdot w_{\text{smoked tofu}} - 27 \cdot w_{\text{chickpea}} - 0 \cdot w_{\text{oil}} \leq -4, \\ \\
+			% Subject to <= 200 mg sodium
+			& & & 9 \cdot w_{\text{tomato}} + 28 \cdot  w_{\text{lettuce}} + 65 \cdot w_{\text{spinach}} + 69  \cdot w_{\text{carrot}} \\
+			& & & + 3.8 \cdot w_{\text{sunflower seed}} + 120 \cdot w_{\text{smoked tofu}} + 78 \cdot w_{\text{chickpea}} + 0 \cdot w_{\text{oil}} \leq 200, \\ \\
+			% Subject to >= 40% leafy greens by mass
+			& & & 0.4 \cdot w_{\text{tomato}} - 0.6 \cdot  w_{\text{lettuce}} - 0.6 \cdot w_{\text{spinach}} + 0.4 \cdot w_{\text{carrot}} \\
+			& & & + 0.4 \cdot w_{\text{sunflower seed}} + 0.4 \cdot w_{\text{smoked tofu}} + 0.4 \cdot w_{\text{chickpea}} + 0.4 \cdot w_{\text{oil}} \leq 0, \\ \\
+			% Subject to weights greater than or equal to zero
+			& & & - w_{\text{tomato}} \leq 0 \\
+			& & & - w_{\text{lettuce}} \leq 0 \\
+			& & & - w_{\text{spinach}} \leq 0 \\
+			& & & - w_{\text{carrot}} \leq 0 \\
+			& & & - w_{\text{sunflower seed}} \leq 0 \\
+			& & & - w_{\text{smoked tofu}} \leq 0 \\
+			& & & - w_{\text{chickpea}} \leq 0 \\
+			& & & - w_{\text{oil}} \leq 0 \\
+		\end{aligned}
+	\end{equation*}
+
+	where the $w$ parameters are the weight of each ingredient, in 100's of grams. The equations, from top to bottom, are:
+	\begin{enumerate}[1)]
+		\item Minimize total calories
+		\item Subject to total protein $\geq$ 15 grams
+		\item Subject to total fat $\geq$ 2 grams
+		\item Subject to total fat $\leq$ 8 grams
+		\item Subject to total carbohydrates $\geq$ 4 grams
+		\item Subject to total sodium $\leq$ 200 milligrams
+		\item Subject to total leafy green mass $\geq$ 40\% of total mass
+		\item Subject to individual ingredient weights $\geq$ 0
+	\end{enumerate}
+
 	\item Determine the optimal solution for the linear program using any software you want. Include a copy of the code/file in the report.
 
+	The following MATLAB code was used to generate the solution: \\
+
+	\lstinputlisting{../problem_two/problem2_partA.m}
+
+	where \verb|X| stores the resulting weights of ingredients (in 100's of grams), \verb|FVAL| stores the minimized number of calories, and \verb|EXITFLAG| stores the status of the \verb|linprog| optimization.
+
 	\item What is the cost of the low calorie salad?
+
+	The optimal low calorie salad contains the following weights of ingredients (in 100's of grams):
+
+	\begin{equation*}
+		\begin{aligned}
+			w_{\text{tomato}} &\approx 0 \\
+			w_{\text{lettuce}} &\approx 0.5855 \\
+			w_{\text{spinach}} &\approx 0 \\
+			w_{\text{carrot}} &\approx 0 \\
+			w_{\text{sunflower seed}} &\approx 0 \\
+			w_{\text{smoked tofu}} &\approx 0.8782 \\
+			w_{\text{chickpea}} &\approx 0 \\
+			w_{\text{oil}} &\approx 0 \\
+		\end{aligned}
+	\end{equation*}
+
+	The optimal low calorie salad costs approximately \$2.33. It contains approximately $114.75$ kcal
 \end{enumerate}
 
 \subsection*{Part B}

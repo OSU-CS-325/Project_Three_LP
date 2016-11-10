@@ -14,3 +14,7 @@
 # LaTeX related
 *.aux
 *.log
+
+# Report related (due to PDF renaming)
+main.pdf
+main.synctex.gz

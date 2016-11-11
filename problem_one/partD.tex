@@ -1,0 +1,18 @@
+\documentclass[../report/main.tex]{subfiles}
+ 
+\begin{document}
+
+% The asterix after \subsection disables section numbering
+\subsection*{Problem 1 Part D}
+Formulate a generalized linear programming model for the transshipment problem. Give the objective function and constraints as mathematical formulas.
+
+\subsection*{Note}
+I can't help but feel that I've already done this in Parts A through C but I'll repeat (and try to expand) here in a more general form.
+
+\subsection*{Objective Function}
+Whereas...\\\\\indent$n$ = number of plants $\geq 1$\\\indent$q$ = number of warehouses $\geq 1$\\\indent$m$ = number of retailers $\geq 1$\\\indent$np_{ij}$ = number of refrigerators shipped from plant $p_i$ to warehouse $w_j$ $\geq 0$\\\indent$cp_{ij}$ = cost of moving a refrigerator between plant $p_i$ and warehouse $w_j$ $> 0$\\\indent$nw_{jk}$ = number of refrigerators shipped from warehouse $w_j$ to retailer $r_k$ $\geq 0$\\\indent$cw_{jk}$ = cost of moving a refrigerator between warehouse $w_j$ and retailer $r_k$ $> 0$\\\\The \textbf{\underline{objective function}} is to...
+\\\\\indent minimize $cost = \mathop{\sum_{i=1}^{n}\sum_{j=1}^{q}}np_{ij}*cp_{ij} +  \mathop{\sum_{j=1}^{q}\sum_{k=1}^{m}}nw_{jk}*cw_{jk}$
+
+\subsection*{Constraints}
+The objective function (designed to minimize $cost$) is \textbf{\underline{subject to}} the following contraints...\\\\\indent $0 \leq $ capacity of each plant $= s_i \leq$ some maximum\\\indent $0 \leq $ throughput capability of each warehouse $ = q_j \leq$ some maximum\\\indent $0 \leq $ demand of each retailer  $ = m_k \leq$ some maximum\\\\and also...\\\\\indent $\mathop{\sum_{i=1}^{n}}np_{ij} = $ capacity of a given plant $p_i$\\\\\indent $\mathop{\sum_{i=1}^{n}}np_{ij} = \mathop{\sum_{k=1}^{m}}nw_{jk}= $ throughput capability for a given warehouse $w_j$\\\\\indent $\mathop{\sum_{k=1}^{m}}nw_{jk} = $ demand of a given retailer $r_k$
+\end{document}

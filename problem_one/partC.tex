@@ -1,0 +1,88 @@
+\documentclass[../report/main.tex]{subfiles}
+ 
+\begin{document}
+
+% The asterix after \subsection disables section numbering
+\subsection*{Problem 1 Part C}
+Determine the number of refrigerators to be shipped from plants to warehouses, and then warehouses to retailers to minimize the cost.  \textcolor{blue}{For part C warehouse 2 is limited to just 100 units per week.  Changes to the problem statement or solution relative to Problem 1 Part A are highlighted in blue.}
+
+\subsection*{Solution}
+\begin{itemize}
+	\item In all 1000 units will travel through the network at a minimum cost of \$17100.
+	\newline
+	\item Ship 150 units from plant \#1 to warehouse \#1 at a cost of \$1500.
+	\item Ship 200 units from plant \#2 to warehouse \#1 at a cost of \$2200.
+	\item Ship 250 units from plant \#2 to warehouse \#2 at a cost of \$2000.
+	\item Ship 150 units from plant \#3 to warehouse \#2 at a cost of \$1200.
+	\item Ship 100 units from plant \#3 to warehouse \#3 at a cost of \$ 900.
+	\item Ship 150 units from plant \#4 to warehouse \#3 at a cost of \$1200.
+	\newline
+	\item Ship 100 units from warehouse \#1 to retailer \#1 at a cost of \$ 500.
+	\item Ship 150 units from warehouse \#1 to retailer \#2 at a cost of \$ 900.
+	\item Ship 100 units from warehouse \#1 to retailer \#3 at a cost of \$ 700.
+	\item Ship 200 units from warehouse \#2 to retailer \#4 at a cost of \$1600.
+	\item Ship 200 units from warehouse \#2 to retailer \#5 at a cost of \$2000.
+	\item Ship 150 units from warehouse \#3 to retailer \#6 at a cost of \$1800.
+	\item Ship 100 units from warehouse \#3 to retailer \#7 at a cost of \$ 600.
+	\newline
+	\item 150 total units will leave plant \#1 (capacity is 150).
+	\item 450 total units will leave plant \#2 (capacity is 450).
+	\item 250 total units will leave plant \#3 (capacity is 250).
+	\item 150 total units will leave plant \#4 (capacity is 150).
+	\newline
+	\item 350 total units will enter warehouse \#1, 350 units will leave.
+	\item 400 total units will enter warehouse \#2, 400 units will leave.
+	\item 250 total units will enter warehouse \#3, 250 units will leave.
+	\newline
+	\item 100 total units will enter retailer \#1 (demand is 100).
+	\item 150 total units will enter retailer \#2 (demand is 150).
+	\item 100 total units will enter retailer \#3 (demand is 100).
+	\item 200 total units will enter retailer \#4 (demand is 200).
+	\item 200 total units will enter retailer \#5 (demand is 200).
+	\item 150 total units will enter retailer \#6 (demand is 150).
+	\item 100 total units will enter retailer \#7 (demand is 100).
+\end{itemize}
+\subsection*{Linear Program Formulation}
+\begin{enumerate}[1.]
+	\item Overall idea of problem
+	\begin{itemize}
+		\item Refrigerators moving from $n=4$ plants to $q=3$ warehouses to $m=7$ retailers.
+		\item Not all plants deliver to all warehouses.
+		\item Not all warehouses deliver to all retailers.
+		\item Costs of shipping from plants to warehouses vary by pair.
+		\item Costs of shipping from warehouses to retailers vary by pair.
+		\item Each plant has a capacity in terms of number of refrigerators it can supply.
+		\item Each retailer has a capacity in terms of number of refrigerators it demands.
+		\item\textcolor{blue}{Warehouse 2 is limited to just 100 units in and out per week.}		
+	\end{itemize}
+	\item What is the goal?  What are you trying to achieve?
+	\begin{itemize}
+		\item Unchanged from part A.
+	\end{itemize}
+	\item Identify variables
+	\begin{itemize}
+		\item Unchanged from part A.
+	\end{itemize}
+	\item Identify constraints
+	\begin{itemize}
+		\item All constraints from part A remain in effect with the addition of two new constraints:
+		\item\textcolor{blue}{$np_{12} + np_{22} + np_{32} + np_{42} = 100$}		
+		\item\textcolor{blue}{$nw_{23} + nw_{24} + nw_{25} + nw_{26} = 100$}		
+	\end{itemize}
+	\item Identify inputs and outputs that you can control
+	\begin{itemize}
+		\item Unchanged from part A.
+	\end{itemize}
+	\item Specify all quantities mathematically
+	\begin{itemize}
+		\item Unchanged from part A.
+	\end{itemize}
+	\item Check the model for completeness and correctness
+	\begin{itemize}
+	\item All variables are positive.
+	\end{itemize}
+\end{enumerate}
+\subsection*{ Matlab Code}
+\textcolor{blue}{Code minimally changed from part A.  Only changes are 2 additional constraints (16 total equations) in the linear equality matrix and vector.  Identical code from part A is not shown below (to save space).}
+\lstinputlisting{../problem_one/partC_changes_fromA.m}
+\end{document}

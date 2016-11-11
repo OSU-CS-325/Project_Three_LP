@@ -1,0 +1,54 @@
+\documentclass[../report/main.tex]{subfiles}
+ 
+\begin{document}
+
+% The asterix after \subsection disables section numbering
+\subsection*{Problem 1 Part B}
+Determine the number of refrigerators to be shipped from plants to warehouses, and then warehouses to retailers to minimize the cost.  \textcolor{red}{For part B warehouse 2 is closed along with all associated routes.  Changes to the problem statement or solution relative to Problem 1 Part A are highlighted in red.}
+
+\subsection*{Solution}
+\textcolor{red}{There is no solution when warehouse 2 is closed.  The following is the error message that is returned by Matlab function linprog():\\\\Exiting: One or more of the residuals, duality gap, or total relative error has grown 100000 times greater than its minimum value so far:\\\indent the primal appears to be infeasible (and the dual unbounded).\\ \indent(The dual residual < TolFun=1.00e-08.)\\\\So Matlab tells us that there is no feasible solution.  Why is that?  If you look back at the network diagram and the supply and demand tables, you'll note that with warehouse 2 out of commission, retailers 5, 6, and 7 can only receive shipments from warehouse 3 and their total demand is 450 units.  At the same time, warehouse 3 can only receive shipments from plant 3 and 4.  The total supply capacity of those plants is only 400 units.  Therefore, warehouse 3 gets 50 less units from plants 3 and 4 than are demanded from retailers 5, 6, and 7.}
+\subsection*{Linear Program Formulation}
+\begin{enumerate}[1.]
+	\item Overall idea of problem
+	\begin{itemize}
+		\item Refrigerators moving from $n=4$ plants to $q=\textcolor{red}{2}$ warehouses to $m=7$ retailers.
+		\item Not all plants deliver to all warehouses.
+		\item Not all warehouses deliver to all retailers.
+		\item Costs of shipping from plants to warehouses vary by pair.
+		\item Costs of shipping from warehouses to retailers vary by pair.
+		\item Each plant has a capacity in terms of number of refrigerators it can supply.
+		\item Each retailer has a capacity in terms of number of refrigerators it demands.
+		\item\textcolor{red}{Warehouse 2 has closed and all associate routes have been eliminated.}		
+	\end{itemize}
+	\item What is the goal?  What are you trying to achieve?
+	\begin{itemize}
+		\item Unchanged from part A.
+	\end{itemize}
+	\item Identify variables
+	\begin{itemize}
+		\item Unchanged from part A.
+	\end{itemize}
+	\item Identify constraints
+	\begin{itemize}
+		\item All constraints from part A remain in effect with the addition of two new constraints:
+		\item\textcolor{red}{$np_{12} + np_{22} + np_{32} + np_{42} = 0$}		
+		\item\textcolor{red}{$nw_{23} + nw_{24} + nw_{25} + nw_{26} = 0$}		
+	\end{itemize}
+	\item Identify inputs and outputs that you can control
+	\begin{itemize}
+		\item Unchanged from part A.
+	\end{itemize}
+	\item Specify all quantities mathematically
+	\begin{itemize}
+		\item Unchanged from part A.
+	\end{itemize}
+	\item Check the model for completeness and correctness
+	\begin{itemize}
+	\item All variables are positive.
+	\end{itemize}
+\end{enumerate}
+\subsection*{ Matlab Code}
+\textcolor{red}{Code minimally changed from part A.  Only changes are 2 additional constraints (16 total equations) in the linear equality matrix and vector.  Identical code from part A is not shown below (to save space).}
+\lstinputlisting{../problem_one/partB_changes_fromA.m}
+\end{document}

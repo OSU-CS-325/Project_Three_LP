@@ -1,0 +1,4 @@
+Exiting: One or more of the residuals, duality gap, or total relative error
+ has grown 100000 times greater than its minimum value so far:
+         the primal appears to be infeasible (and the dual unbounded).
+         (The dual residual < TolFun=1.00e-08.)

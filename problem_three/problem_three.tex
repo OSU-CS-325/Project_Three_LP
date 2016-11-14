@@ -115,8 +115,14 @@ has stalled:
     The list will be the same except for the addition of the line 'a to z: Inf' which shows that you cannot access vertex z from a in the current graph because that is what was specified in the question.
 
 	\item What are the lengths of the shortest paths from each vertex to vertex $m$? How can you solve this problem with just one linear program?
+    
+    For this part we just swapped the directionality on all the edges from part A and set the origin to be vertex m. This yields the distance from m to every other vertex at once which the distances would be equivalent regardless of direction so it works out.
 
-    Code used to find the shortest paths from all other vertices to m:
+    Code used to find the shortest paths from all other vertices using a single linear program:
+
+  
+
+    Code used to find the shortest paths from all other vertices to m using the shortest path function:
 
     \lstinputlisting{../problem_three/problem3_digraph_shortest_path_to_m.m}
 

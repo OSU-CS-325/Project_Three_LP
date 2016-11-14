@@ -2,6 +2,6 @@
 
 Problem 1: Cash
 
-Problem 2:
+Problem 2: Kyle
 
-Problem 3:
+Problem 3: Kyle and Alex

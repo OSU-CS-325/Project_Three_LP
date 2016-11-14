@@ -59,7 +59,7 @@
 
     Code used to find the shortest paths:
   
-    \lstinputlisting{../problem_three/matlab/project3_problem3_part_a.m}
+    \lstinputlisting{../problem_three/matlab/problem3_partA.m}
 
     The lengths of the shortest paths from a to the other vertices in the graph are listed below:
     \begin{itemize}
@@ -82,17 +82,21 @@
 
     \includegraphics{../problem_three/img/problem3_digraph_with_z.png}
 
-    When using the linear programming script from part a with the new vertex z the matlab code fails with this message: "Exiting: One or more of the residuals, duality gap, or total relative error
+    \lstinputlisting{../problem_three/matlab/problem3_partB.m}
+
+    When using the script above with the new vertex z the matlab code fails with this message: "Exiting: One or more of the residuals, duality gap, or total relative error
 has stalled:
         the dual appears to be infeasible and the primal unbounded since
         the primal objective < -1e+10
         and the dual objective < 1e+6."
 
-    This error is consistent with what is expected because we are trying to find the shortest path from a to all other vertices however that is not feasible with the new vertex z because we made it inaccessible
+    This error is consistent with what is expected because we are trying to find the shortest path from a to all other vertices however that is not feasible with the new vertex z because we made it inaccessible.
+
+    However a workaround for this result would be to look at the preliminary optimization results to see which nodes are causing problems. We can specify those problem nodes to fixed dummy distances that are very large relative to the longest feasible path(s). We then rerun the script to obtain the shortest paths for the remaining reachable nodes.
 
     Code used to find shortest paths from a with the new vertex z using shortestpath function in Matlab:
   
-    \lstinputlisting{../problem_three/problem3_digraph_shortest_path_to_a_with_z.m}
+    \lstinputlisting{../problem_three/matlab/problem3_digraph_shortest_path_to_a_with_z.m}
 
     The list that results when the script above is executed:
 
@@ -120,7 +124,7 @@ has stalled:
 
     Code used to find the shortest paths from all other vertices using a single linear program:
 
-  
+    \lstinputlisting{../problem_three/matlab/problem3_partC.m}
 
     Code used to find the shortest paths from all other vertices to m using the shortest path function:
 

@@ -82,7 +82,15 @@
 
     \includegraphics{../problem_three/img/problem3_digraph_with_z.png}
 
-    Code used to find shortest paths from a with the new vertex z:
+    When using the linear programming script from part a with the new vertex z the matlab code fails with this message: "Exiting: One or more of the residuals, duality gap, or total relative error
+has stalled:
+        the dual appears to be infeasible and the primal unbounded since
+        the primal objective < -1e+10
+        and the dual objective < 1e+6."
+
+    This error is consistent with what is expected because we are trying to find the shortest path from a to all other vertices however that is not feasible with the new vertex z because we made it inaccessible
+
+    Code used to find shortest paths from a with the new vertex z using shortestpath function in Matlab:
   
     \lstinputlisting{../problem_three/problem3_digraph_shortest_path_to_a_with_z.m}
 

@@ -1,0 +1,14 @@
+----- P3.A SOLUTION -----
+Distance from a to a = -0 
+Distance from a to b =  2 
+Distance from a to c =  3 
+Distance from a to d =  8 
+Distance from a to e =  9 
+Distance from a to f =  6 
+Distance from a to g =  8 
+Distance from a to h =  9 
+Distance from a to i =  8 
+Distance from a to j = 10 
+Distance from a to k = 14 
+Distance from a to l = 15 
+Distance from a to m = 17 

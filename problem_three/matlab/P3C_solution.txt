@@ -1,0 +1,14 @@
+----- P3.C SOLUTION -----
+Distance from a to m = 17 
+Distance from b to m = 15 
+Distance from c to m = 15 
+Distance from d to m = 12 
+Distance from e to m = 19 
+Distance from f to m = 11 
+Distance from g to m = 14 
+Distance from h to m = 14 
+Distance from i to m =  9 
+Distance from j to m =  7 
+Distance from k to m = 10 
+Distance from l to m =  2 
+Distance from m to m =  0 

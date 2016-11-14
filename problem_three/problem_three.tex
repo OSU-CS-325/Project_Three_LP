@@ -7,9 +7,9 @@
 
     The shortest path problem can be solved using a linear programming model of the following form:
 
-    maximize d_t
-    subject to d_s = 0
-               d_v - d_u \leq l_{u -> v} for every edge u -> v
+    maximize $d_t$
+    subject to $d_s = 0$
+               $d_v - d_u \leq l_{u -> v}$ for every edge $u$ -> $v$
 
     Based on the paths and weights denoted from the Project3Problem3-1.txt file the expressions for the linear programming solution to find shortest paths will be:
 
@@ -128,7 +128,7 @@ has stalled:
 
     Code used to find the shortest paths from all other vertices to m using the shortest path function:
 
-    \lstinputlisting{../problem_three/problem3_digraph_shortest_path_to_m.m}
+    \lstinputlisting{../problem_three/matlab/problem3_digraph_shortest_path_to_m.m}
 
     \begin{itemize}
         \item a to m: 10

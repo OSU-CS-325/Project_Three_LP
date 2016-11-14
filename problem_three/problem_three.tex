@@ -62,20 +62,9 @@
     \lstinputlisting{../problem_three/matlab/problem3_partA.m}
 
     The lengths of the shortest paths from a to the other vertices in the graph are listed below:
-    \begin{itemize}
-        \item a to b: 2
-        \item a to c: 3
-        \item a to d: 8
-        \item a to e: 9
-        \item a to f: 6
-        \item a to g: 8
-        \item a to h: 9
-        \item a to i: 8
-        \item a to j: 13
-        \item a to k: 15
-        \item a to l: 17
-        \item a to m: 10
-    \end{itemize}
+    
+    \lstinputlisting{../problem_three/matlab/P3A_solution.txt}
+
 	\item If a vertex $z$ is added to the graph for which there is no path from vertex $a$ to vertex $z$, what will be the result when you attempt to find the lengths of shortest paths as in part a).
 
     Graphic with the new vertex z added:
@@ -94,30 +83,6 @@ has stalled:
 
     However a workaround for this result would be to look at the preliminary optimization results to see which nodes are causing problems. We can specify those problem nodes to fixed dummy distances that are very large relative to the longest feasible path(s). We then rerun the script to obtain the shortest paths for the remaining reachable nodes.
 
-    Code used to find shortest paths from a with the new vertex z using shortestpath function in Matlab:
-  
-    \lstinputlisting{../problem_three/matlab/problem3_digraph_shortest_path_to_a_with_z.m}
-
-    The list that results when the script above is executed:
-
-    \begin{itemize}
-        \item a to b: 2
-        \item a to c: 3
-        \item a to d: 8
-        \item a to e: 9
-        \item a to f: 6
-        \item a to g: 8
-        \item a to h: 9
-        \item a to i: 8
-        \item a to j: 13
-        \item a to k: 15
-        \item a to l: 17
-        \item a to m: 10
-        \item a to z: Inf
-    \end{itemize}
-
-    The list will be the same except for the addition of the line 'a to z: Inf' which shows that you cannot access vertex z from a in the current graph because that is what was specified in the question.
-
 	\item What are the lengths of the shortest paths from each vertex to vertex $m$? How can you solve this problem with just one linear program?
     
     For this part we just swapped the directionality on all the edges from part A and set the origin to be vertex m. This yields the distance from m to every other vertex at once which the distances would be equivalent regardless of direction so it works out.
@@ -126,26 +91,19 @@ has stalled:
 
     \lstinputlisting{../problem_three/matlab/problem3_partC.m}
 
-    Code used to find the shortest paths from all other vertices to m using the shortest path function:
+    Output of the paths after running the above script:
 
-    \lstinputlisting{../problem_three/matlab/problem3_digraph_shortest_path_to_m.m}
-
-    \begin{itemize}
-        \item a to m: 10
-        \item b to m: 8
-        \item c to m: 8
-        \item d to m: 5
-        \item e to m: 12
-        \item f to m: 4
-        \item g to m: 7
-        \item h to m: 7
-        \item i to m: 2
-        \item j to m: 6
-        \item k to m: 10
-        \item l to m: 2
-    \end{itemize}
+    \lstinputlisting{../problem_three/matlab/P3C_solution.txt}
 
 	\item Suppose that all paths must pass through vertex $i$. How can you calculate the length of the shortest path from any vertex $x$ to vertex $y$ that pass through vertex $i$ (for all $x, y \in V$)? Calculate the lengths of these paths for the given graph. (Note: for some vertices $x$ and $y$, it may be impossible to pass through vertex $i$).
+
+    Code used to find the paths from one vertex to another while passing through an intermediate vertex $i$:
+
+    \lstinputlisting{../problem_three/matlab/problem3_partD.m}
+
+    The outputted paths after running the above script:
+
+    \lstinputlisting{../problem_three/matlab/P3D_solution.txt}
 \end{enumerate}
 
 \end{document}

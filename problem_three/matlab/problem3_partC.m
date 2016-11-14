@@ -63,8 +63,12 @@ f = -ones(numberOfNodes, 1);
 
 [x, fval, exitflag] = linprog(f,A,b,Aeq,beq);
 
-fprintf('----- P3.C SOLUTION -----\n')
+fid = fopen('P3C_solution.txt', 'w');
+
+fprintf(fid, '----- P3.C SOLUTION -----\n');
 for j = 1:numel(x)
-    fprintf('Distance from %c to m = %2.0f \n', char('a'+ j - 1), x(j))
+    fprintf(fid, 'Distance from %c to m = %2.0f \n', char('a'+ j - 1), x(j));
 end
+
+fclose(fid);
 
